@@ -16,6 +16,7 @@ struct ContentView: View {
         
         VStack{
             Text(viewModel.title).font(.title)
+            Text("Score: \(viewModel.score)").font(.title2)
             
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: bestCardWidth()))]) {
@@ -27,7 +28,7 @@ struct ContentView: View {
                                 viewModel.choose(card)
                             }
                     }
-                }.foregroundColor(.red)
+                }.foregroundColor(viewModel.color)
             }
             .font(.largeTitle)
             .padding(.horizontal)

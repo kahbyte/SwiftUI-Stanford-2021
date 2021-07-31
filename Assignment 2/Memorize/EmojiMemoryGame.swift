@@ -19,6 +19,7 @@ import SwiftUI
 //VIEWMODEL
 class EmojiMemoryGame: ObservableObject {
     static var chosenTheme: GameTheme!
+    static var cards: [MemoryGame<String>.Card]!
     
     static let themes: [GameTheme] = [
         GameTheme(title: "Halloween", color: "Orange", emojis: ["👻","💀","☠️","🫀","🧠","🧟‍♀️","🧞","🪰","🕸","🦴","🐀"]),
@@ -56,8 +57,12 @@ extension EmojiMemoryGame/*: EmojiMemoryGameProtocol*/ {
         theme.title
     }
 
-    var color: String {
-        theme.color
+    var color: Color {
+        Color(theme.color)
+    }
+    
+    var score: Int {
+        model.score
     }
     
     //MARK: - Intent(s)
@@ -69,4 +74,5 @@ extension EmojiMemoryGame/*: EmojiMemoryGameProtocol*/ {
         model = EmojiMemoryGame.createMemoryGame()!
         theme = EmojiMemoryGame.chosenTheme
     }
+    
 }
